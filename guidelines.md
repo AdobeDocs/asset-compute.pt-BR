@@ -1,51 +1,51 @@
 ---
-source-git-commit: c0fd9623ad09443a99695352743a165744961758
+source-git-commit: f15b9819d3319d22deccdf7e39c0f72728baaa39
 workflow-type: tm+mt
-source-wordcount: '648'
-ht-degree: 45%
+source-wordcount: '588'
+ht-degree: 33%
 
 ---
-# Diretrizes para contribuir para a documentação
+# Diretrizes para o Contribute na documentação
 
 ## Filosofia da documentação
 
-Sabemos que os usuários trabalham em ambientes altamente competitivos, lutando para criar experiências digitais que os separam de seus concorrentes. Portanto, é essencial que, quando o Adobe oferece novas ferramentas avançadas, essas ferramentas sejam complementadas com documentação precisa e clara para permitir que o cliente aproveite imediatamente seu investimento e maximize o ROI.
+Os usuários trabalham em ambientes altamente competitivos, esforçando-se para criar experiências digitais que as destaquem de seus concorrentes. Portanto, é vital que, ao oferecer novas ferramentas avançadas, o Adobe seja complementado com documentação precisa e clara. Documentação que permite aos clientes usar seu investimento imediatamente e maximizar o ROI.
 
-O objetivo é colocar a documentação nas mãos de seus usuários o mais rápido possível. Portanto, priorizamos uma documentação precisa e utilizável, e nos esforçamos para atualizá-la e aprimorá-la continuamente.
+O objetivo é colocar a documentação nas mãos de seus usuários assim que possível. Portanto, a Adobe prioriza uma documentação precisa e utilizável, e busca atualizá-la e aprimorá-la continuamente.
 
 ## Contribuições à documentação
 
-Para melhorar continuamente a documentação, toda a comunidade de usuários é bem-vinda para contribuir com ela. Seja por meio de pull requests ou problemas, as melhorias na documentação podem ser correções, esclarecimentos, expansões e exemplos adicionais.
+Para melhorar continuamente a documentação do, toda a comunidade de usuários do é bem-vinda para contribuir em sua elaboração. Seja por meio de pull requests ou problemas, as melhorias na documentação podem ser correções, esclarecimentos, expansões e exemplos adicionais.
 
 ## Padrões de documentação
 
-Embora contribuições à documentação do sejam bem-vindas, sejam em formato de pull requests ou em formato de um problema, elas deverão estar em conformidade com nossos padrões de contribuição e de documentação. As contribuições que não cumprirem esses padrões poderão ser rejeitadas.
+Qualquer contribuição para a documentação, seja na forma de um pull request ou um problema, deve estar em conformidade com os padrões de contribuição e documentação do Adobe.
 
-### Documentamos casos de uso padrão e não soluções alternativas
+### Os casos de uso padrão estão documentados no Adobe
 
-A documentação abrange casos de uso padrão. Casos de uso além do escopo da instalação e uso padrão e suportado do produto não fazem parte da documentação. Por isso, defeitos, efeitos causados por defeitos e soluções alternativas por defeitos geralmente não são documentados.
+A documentação abrange casos de uso padrão. Casos de uso que não se enquadrarem no escopo de instalação e de uso padrão e com suporte do produto não farão parte da documentação.
 
-As exceções a essa regra são notas de versão em que os problemas conhecidos podem ser listados com possíveis soluções alternativas aprovadas pelo Adobe.
+As exceções a essa regra são notas de versão em que problemas conhecidos podem ser listados com possíveis soluções alternativas aprovadas pelo Adobe.
 
-### As contribuições de documentação não são para responder consultas de clientes
+### As contribuições à documentação não são para responder às consultas dos clientes
 
-Quaisquer ideias que você possa ter para melhorar a documentação são bem-vindas como contribuições. No entanto, comentários, problemas e pull requests destinam-se somente a *contribuições*, Eles não se destinam a ser usados para responder suas perguntas sobre como usar o produto, implementar projetos ou resolver problemas técnicos.
+Quaisquer ideias para melhorar a documentação do são bem-vindas como contribuições. No entanto, comentários, problemas e pull requests destinam-se a *contribuições* somente. Eles não são para responder suas perguntas sobre como usar o produto, implementar projetos ou resolver problemas técnicos.
 
-Qualquer dúvida sobre o uso ou erros técnicos que você possa ter deve ser relatada por meio do processo de suporte normal através do [[!DNL Experience Manager] Portal de suporte ao cliente](https://experienceleague.adobe.com/?support-solution=Experience+Manager#home) ou discutida na [[!DNL Experience Manager] comunidade](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community).
+Quaisquer dúvidas sobre o uso do ou erros técnicos devem ser notificados por meio do processo normal de suporte no [[!DNL Experience Manager] Portal de suporte ao cliente](https://experienceleague.adobe.com/?support-solution=Experience+Manager&amp;lang=pt-BR#home) ou discutido na [[!DNL Experience Manager] comunidade](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/ct-p/adobe-experience-manager-community?profile.language=pt).
 
-As contribuições de documentação não são uma substituição do Atendimento ao cliente do Adobe*** e quaisquer contribuições que buscam respostas para perguntas relacionadas ao suporte serão rejeitadas.
+***As contribuições à documentação não substituem o Atendimento ao cliente do Adobe*** e quaisquer contribuições que buscam respostas para perguntas relacionadas a suporte são rejeitadas.
 
 ### As contribuições devem mencionar claramente as páginas pertinentes à documentação.
 
-Se você criar um problema para sugerir melhorias na documentação, deverá incluir links para as páginas afetadas. Caso crie um problema usando o link **Editar esta página** em uma página de documentação, o problema será criado automaticamente com um link para a página.
+Se você criar um problema para sugerir melhorias na documentação, deverá incluir links para as páginas afetadas. Caso crie um tópico por meio de um link **Editar esta página** na documentação, o tópico será criado automaticamente com um link para a página.
 
-Isso não se aplica a pull requests, que já fazem referência às páginas afetadas.
+Esse processo não se aplica a pull requests, que já fazem referência às páginas afetadas.
 
 ## Diretrizes de documentação
 
-Solicitamos que qualquer contribuição à nossa documentação siga determinados guias de estilo.
+Solicitamos que qualquer contribuição para a documentação siga certas diretrizes de estilo.
 
-Seguir essas diretrizes facilita a revisão de sua contribuição, o que agiliza a integração à nossa documentação.
+Seguir essas diretrizes facilita a revisão de sua contribuição e, portanto, a integração à documentação do Adobe é mais rápida.
 
 ### Idioma e estilo
 
@@ -55,11 +55,11 @@ Seguir essas diretrizes facilita a revisão de sua contribuição, o que agiliza
 * Mantenha as sentenças o mais simples possível.
 * Use linguagem clara e concisa.
 
-Lembre-se, os leitores da documentação são de todo o mundo e não é de se esperar que sejam falantes nativos ou fluentes do inglês. Evite linguagem coloquial, mantendo-a a mais clara e simples possível.
+Lembre-se de que os leitores da documentação do estão espalhados ao redor do mundo, e não espera-se que sejam falantes nativos ou fluentes em inglês. Evite linguagem coloquial e utilize um vocabulário claro e simples.
 
-#### Siga o Manual de estilo da Microsoft
+#### Siga o Manual de estilo do Microsoft
 
-[O Manual de ](https://docs.microsoft.com/pt-br/style-guide/welcome/) estilo da Microsoft é um guia de estilo de documentação disponível gratuitamente, que se concentra na documentação do software.
+[Manual de estilo do Microsoft](https://learn.microsoft.com/pt-br/style-guide/welcome/) O é um guia de estilo disponível gratuitamente. Ele se concentra na documentação de softwares.
 
 ### Formatação
 
@@ -75,6 +75,6 @@ As capturas de tela devem ser utilizadas com critério e somente quando uma desc
 
 Não use marcadores ou outras anotações, como quadros vermelhos, setas ou texto nas capturas de tela. Dessa forma, as capturas de tela são mais fáceis de reutilizar e replicar em versões localizadas da documentação.
 
-### Referências específicas da versão
+### Referências específicas à versão
 
-Evite referências diretas a uma versão específica em todo o conteúdo da documentação, sempre que possível. Isso torna a documentação mais flexível e extensível para versões futuras.
+Evite referências diretas a uma versão específica em todo o conteúdo da documentação, sempre que possível. Esta recomendação torna a documentação mais flexível e extensível para versões futuras.
