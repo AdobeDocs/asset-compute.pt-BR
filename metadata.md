@@ -12,10 +12,10 @@ feature-set: Experience Manager Assets
 git-repo: https://github.com/AdobeDocs/asset-compute.pt-BR
 index: y
 recommendations: noDisplay
-source-git-commit: cb87ab6081d53610acf27419fa5103b3ae1ead03
+source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
 workflow-type: tm+mt
-source-wordcount: '128'
-ht-degree: 91%
+source-wordcount: '132'
+ht-degree: 84%
 
 ---
 
@@ -30,8 +30,8 @@ O arquivo metadata.md inclui metadados de nível de repositório que passam para
 | solution-hub-url | Abre a página do hub de suporte |
 | solution-icon | Exibe o ícone da solução ao lado do título da solução. Ainda não implementado |
 | getting-started-url | Link para a página de introdução |
-| tutorials-url | Link para tutoriais em vídeo — tutoriais de ajuda ou tutoriais de KT |
-| mini-toc-levels | Calcula o número de níveis de cabeçalho exibidos no painel direito. O padrão é 2 |
+| tutorials-url | Link para tutoriais em vídeo — tutoriais de ajuda ou tutoriais de transferência de conhecimento |
+| mini-toc-levels | Determina o número de níveis de cabeçalho exibidos no painel direito. O padrão é 2 |
 | git-repo | Especifica o local do repositório principal para uso interno |
 
 No arquivo TOC.md
