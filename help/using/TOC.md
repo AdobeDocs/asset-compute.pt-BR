@@ -6,7 +6,7 @@ type: Documentation
 role: Developer
 feature: Asset Compute Microservices
 user-guide-title: Guia de serviço do Asset Compute
-user-guide-description: Esta documentação abrange [!DNL Asset Compute Service] tarefas como desenvolver, gerenciar, implantar e solucionar problemas do código personalizado.
+user-guide-description: Esta documentação abrange [!DNL Asset Compute Service] tarefas, como desenvolver, gerenciar, implantar e solucionar problemas do código personalizado.
 breadcrumb-title: Guia de serviço do Asset Compute
 source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
 workflow-type: tm+mt
@@ -23,13 +23,13 @@ ht-degree: 6%
 + [Formatos de arquivo não suportados](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support)
 + [Arquitetura](architecture.md)
 + [Referências de API](api.md)
-+ Estender serviço do Asset Compute {#extend}
++ Estender Serviço Asset Compute {#extend}
    + [Sobre a extensão do Serviço de Computação](understand-extensibility.md)
    + [Configurar o ambiente](setup-environment.md)
    + [Entender os conceitos internos de um aplicativo](custom-application-internals.md)
    + [Desenvolver um aplicativo personalizado](develop-custom-application.md)
    + [Testar um aplicativo personalizado](test-custom-application.md)
    + [Implantar um aplicativo personalizado](deploy-custom-application.md)
-   + [Integrar e usar no [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview)
+   + [Integrar e usar o in [!DNL Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview)
 + [Solução de problemas](troubleshooting.md)
 + [Contribute para o projeto de código aberto](contribute-to-compute-service.md)
