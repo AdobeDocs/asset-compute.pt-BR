@@ -2,9 +2,9 @@
 title: Definir o ambiente de desenvolvimento necessário para  [!DNL Asset Compute Service]
 description: Configuração do ambiente de desenvolvedor para  [!DNL Asset Compute Service]  para começar a criar e testar o código personalizado.
 exl-id: 91c12889-01d8-4757-9bdd-f73c491cd9d5
-source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
+source-git-commit: db38b9dc27505aa7e04cf58a646005fc2e0e8782
 workflow-type: tm+mt
-source-wordcount: '324'
+source-wordcount: '359'
 ht-degree: 1%
 
 ---
@@ -43,6 +43,10 @@ Para criar uma configuração que permita o desenvolvimento do [!DNL Asset Compu
 1. [Criar um projeto do App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/). Clique em **[!UICONTROL Criar novo projeto]** > **[!UICONTROL Projeto a partir do modelo]**. Selecione App Builder. Ele cria um novo Projeto do App Builder com dois espaços de trabalho: `Production` e `Stage`. Adicione mais espaços de trabalho, por exemplo `Development`, conforme necessário.
 
 1. No Projeto do App Builder, selecione um espaço de trabalho e assine os serviços necessários para o Asset Compute. Clique em **Adicionar ao Projeto** > **API** e adicione os serviços `Asset Compute`, `IO Events` e `IO Events Management`. Ao adicionar a primeira API, ele solicita a criação de uma chave privada. Salve essas informações em sua máquina, pois você precisa dessa chave para testar seu aplicativo personalizado com a ferramenta de desenvolvedor.
+
+   >[!NOTE]
+   >
+   >O JWT está obsoleto e a chave privada não está disponível para download. Enquanto estamos trabalhando na atualização das ferramentas de teste, observe que os trabalhadores personalizados criados usando OAuth podem ser implantados, mas devtools não funcionariam.
 
 ## Próxima etapa {#next-step}
 

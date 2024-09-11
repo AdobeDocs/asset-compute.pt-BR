@@ -2,9 +2,9 @@
 title: Desenvolver para  [!DNL Asset Compute Service]
 description: Criar aplicativos personalizados usando o  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
+source-git-commit: db38b9dc27505aa7e04cf58a646005fc2e0e8782
 workflow-type: tm+mt
-source-wordcount: '1507'
+source-wordcount: '1542'
 ht-degree: 0%
 
 ---
@@ -96,6 +96,10 @@ Insira as credenciais subsequentes da ferramenta de desenvolvimento no arquivo `
    ```conf
    ASSET_COMPUTE_PRIVATE_KEY_FILE_PATH=
    ```
+
+   >[!NOTE]
+   >
+   >O JWT está obsoleto e a chave privada não está disponível para download. Enquanto estamos trabalhando na atualização das ferramentas de teste, observe que os trabalhadores personalizados criados usando OAuth podem ser implantados, mas devtools não funcionariam.
 
 1. Baixe o arquivo da Adobe Developer Console. Vá para a raiz do projeto e clique em &quot;Baixar tudo&quot; no canto superior direito. O arquivo é baixado com `<namespace>-<workspace>.json` como o nome do arquivo. Siga uma das seguintes opções:
 
