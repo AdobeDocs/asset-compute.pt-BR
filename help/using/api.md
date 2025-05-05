@@ -373,7 +373,7 @@ Estas são as opções disponíveis para a matriz `renditions` em [`/process`](#
 
 | Nome | Tipo | Descrição | Exemplo |
 |-------------------|----------|-------------|---------|
-| `fmt` | `string` | O formato de destino das representações também pode ser `text` para extração de texto e `xmp` para extração de metadados XMP como xml. Ver [formatos com suporte](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
+| `fmt` | `string` | O formato de destino das representações também pode ser `text` para extração de texto e `xmp` para extração de metadados XMP como xml. Ver [formatos com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de um [aplicativo personalizado](develop-custom-application.md). Deve ser uma URL `https://`. Se esse campo estiver presente, um aplicativo personalizado criará a representação. Qualquer outro campo de representação definido é usado no aplicativo personalizado. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
 | `target` | `string` | O URL para o qual a representação gerada deve ser carregada usando o PUT HTTP. | `http://w.com/img.jpg` |
 | `target` | `object` | Informações de upload de URL pré-assinado de várias partes para a representação gerada. Estas informações são para [AEM/Carregamento binário direto do Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) com este [comportamento de carregamento multiparte](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadeias de caracteres, uma para cada URL de parte pré-assinada</li><li>`minPartSize`: o tamanho mínimo a ser usado para uma parte = url</li><li>`maxPartSize`: o tamanho máximo a ser usado para uma parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
@@ -381,7 +381,7 @@ Estas são as opções disponíveis para a matriz `renditions` em [`/process`](#
 
 ### Campos específicos da representação {#rendition-specific-fields}
 
-Para obter uma lista de formatos de arquivo com suporte no momento, consulte [formatos de arquivo com suporte](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
+Para obter uma lista de formatos de arquivo com suporte no momento, consulte [formatos de arquivo com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 | Nome | Tipo | Descrição | Exemplo |
 |-------------------|----------|-------------|---------|

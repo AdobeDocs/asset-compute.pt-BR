@@ -25,7 +25,7 @@ O [!DNL Adobe Developer App Builder] é uma estrutura para compilar e implantar 
 
 O [!DNL Asset Compute Service] oferece suporte a alguns casos de uso comerciais comuns, como processamento básico de imagens, conversões específicas de aplicativos Adobe e criação de aplicativos personalizados que organizam requisitos comerciais complexos.
 
-Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para diferentes tipos de arquivos, renderizações de imagem de alta qualidade para os [formatos de arquivo com suporte](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support). Consulte [casos de uso com suporte por meio da configuração personalizada](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para diferentes tipos de arquivos, renderizações de imagem de alta qualidade para os [formatos de arquivo com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support). Consulte [casos de uso com suporte por meio da configuração personalizada](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -46,7 +46,7 @@ Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para d
 >
 >* [Visão geral do processamento de ativos com microsserviços de ativos no [!DNL Adobe Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview).
 >* [Documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/overview).
->* [Formatos de arquivo com suporte para processamento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
+>* [Formatos de arquivo com suporte para processamento](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 <!-- **TBD:**
 * Clarify the service can only be used within AEM as Cloud Service. The docs provided as context for custom application developers. Not to be used as a standalone service.
