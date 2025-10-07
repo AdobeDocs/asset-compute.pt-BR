@@ -2,9 +2,9 @@
 title: Desenvolver para  [!DNL Asset Compute Service]
 description: Criar aplicativos personalizados usando o  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: db38b9dc27505aa7e04cf58a646005fc2e0e8782
+source-git-commit: 94fd8c0888185f64825046b7999655e9501a71fe
 workflow-type: tm+mt
-source-wordcount: '1542'
+source-wordcount: '1489'
 ht-degree: 0%
 
 ---
@@ -19,13 +19,13 @@ Antes de começar a desenvolver um aplicativo personalizado:
 
 ## Criar um aplicativo personalizado {#create-custom-application}
 
-Verifique se o [Adobe-cli](https://github.com/adobe/aio-cli) está instalado localmente.
+Verifique se o [Adobe aio-cli](https://github.com/adobe/aio-cli) está instalado localmente.
 
 1. Para criar um aplicativo personalizado, [crie um projeto do App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#4-bootstrapping-new-app-using-the-cli). Para fazer isso, execute o `aio app init <app-name>` no terminal.
 
    Se você ainda não tiver feito logon, este comando solicitará que um navegador entre no [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) com sua Adobe ID. Consulte [aqui](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#3-signing-in-from-cli) para obter mais informações sobre como entrar pela cli.
 
-   O Adobe recomenda que você faça logon primeiro. Se tiver problemas, siga as instruções [para criar um aplicativo sem fazer logon](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#42-developer-is-not-logged-in-as-enterprise-organization-user).
+   A Adobe recomenda que você faça logon primeiro. Se tiver problemas, siga as instruções [para criar um aplicativo sem fazer logon](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#42-developer-is-not-logged-in-as-enterprise-organization-user).
 
 1. Depois de fazer logon, siga os prompts na CLI e selecione os `Organization`, `Project` e `Workspace` a serem usados para o aplicativo. Escolha o projeto e o espaço de trabalho criados quando você [configurou o ambiente](setup-environment.md). Quando solicitado `Which extension point(s) do you wish to implement ?`, certifique-se de selecionar `DX Asset Compute Worker`:
 
@@ -64,7 +64,7 @@ Verifique se o [Adobe-cli](https://github.com/adobe/aio-cli) está instalado loc
 
    Leia aqui sobre os [principais componentes de um aplicativo App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/#5-anatomy-of-an-app-builder-application).
 
-   O aplicativo modelo usa o [SDK do Asset Compute](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) do Adobe para fazer upload, download e orquestração de representações de aplicativos, de modo que os desenvolvedores só precisam implementar a lógica de aplicativo personalizado. Na pasta `actions/<worker-name>`, o arquivo `index.js` é onde o código de aplicativo personalizado deve ser adicionado.
+   O aplicativo modelo usa o [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) da Adobe para fazer upload, download e orquestração de representações de aplicativos, de modo que os desenvolvedores só precisam implementar a lógica de aplicativo personalizado. Na pasta `actions/<worker-name>`, o arquivo `index.js` é onde o código de aplicativo personalizado deve ser adicionado.
 
 Consulte [exemplos de aplicativos personalizados](#try-sample) para obter exemplos e ideias de aplicativos personalizados.
 
@@ -90,17 +90,17 @@ Verifique se você tem acesso a um [contêiner de armazenamento na nuvem com sup
 #### Adicionar credenciais ao arquivo ENV {#add-credentials-env-file}
 
 Insira as credenciais subsequentes da ferramenta de desenvolvimento no arquivo `.env`. O arquivo está localizado na raiz do projeto do App Builder:
+<!--
+1. Add the absolute path to the private key file created while adding services to your App Builder Project:
 
-1. Adicione o caminho absoluto ao arquivo de chave privada criado ao adicionar serviços ao seu projeto do App Builder:
-
-   ```conf
-   ASSET_COMPUTE_PRIVATE_KEY_FILE_PATH=
-   ```
+    ```conf
+    ASSET_COMPUTE_PRIVATE_KEY_FILE_PATH=
+    ```
 
    >[!NOTE]
    >
-   >O JWT está obsoleto e a chave privada não está disponível para download. Enquanto estamos trabalhando na atualização das ferramentas de teste, observe que os trabalhadores personalizados criados usando OAuth podem ser implantados, mas devtools não funcionariam.
-
+   >JWT is deprecated and Private Key is not available for download. While we are working on updating the testing tools, note that custom workers created using OAuth can be deployed but devtools would not work.
+-->
 1. Baixe o arquivo da Adobe Developer Console. Vá para a raiz do projeto e clique em &quot;Baixar tudo&quot; no canto superior direito. O arquivo é baixado com `<namespace>-<workspace>.json` como o nome do arquivo. Siga uma das seguintes opções:
 
    * Renomeie o arquivo como `console.json` e mova-o para a raiz do seu projeto.
@@ -228,7 +228,7 @@ O `example-worker-animal-pictures` passa um parâmetro personalizado [`animal`](
 
 Por padrão, os aplicativos personalizados do Asset Compute vêm com verificações de Autorização e Autenticação para o projeto do App Builder. Habilitado ao configurar a anotação `require-adobe-auth` como `true` em `manifest.yml`.
 
-### Acessar outras APIs Adobe {#access-adobe-apis}
+### Acessar outras APIs do Adobe {#access-adobe-apis}
 
 <!-- TBD: Revisit this section. Where do we document console workspace creation?
 -->
@@ -290,14 +290,14 @@ Um aplicativo é executado em um contêiner no Adobe [!DNL I/O Runtime] com [lim
           concurrency: 1
 ```
 
-Devido ao processamento extensivo feito pelos aplicativos do Asset Compute, você deve ajustar esses limites para obter o desempenho ideal (grande o suficiente para lidar com ativos binários) e eficiência (não desperdiçando recursos devido à memória do contêiner não utilizada).
+Devido ao processamento extensivo feito pelos aplicativos do Asset Compute, você deve ajustar esses limites para obter o desempenho ideal (grande o suficiente para lidar com ativos binários) e eficiência (não desperdiçar recursos devido à memória do contêiner não usada).
 
 O tempo limite padrão para ações em Tempo de Execução é de um minuto, mas pode ser aumentado definindo o limite de `timeout` (em milissegundos). Se você espera processar arquivos maiores, aumente esse tempo. Considere o tempo total necessário para baixar a origem, processar o arquivo e fazer upload da representação. Se uma ação atingir o tempo limite, ou seja, não retornar a ativação antes do tempo limite especificado, o Tempo de execução descartará o contêiner e não o reutilizará.
 
-Por natureza, os aplicativos de asset compute tendem a ser vinculados à rede e à entrada ou saída de disco. O arquivo de origem deve ser baixado primeiro. O processamento geralmente consome muitos recursos e as representações resultantes são carregadas novamente.
+Por natureza, os aplicativos Asset Compute tendem a ser vinculados à rede e à entrada ou saída de disco. O arquivo de origem deve ser baixado primeiro. O processamento geralmente consome muitos recursos e as representações resultantes são carregadas novamente.
 
-Você pode especificar a memória alocada para um contêiner de ação em megabytes usando o parâmetro `memorySize`. Atualmente, esse parâmetro também define quanto acesso à CPU o contêiner recebe e, mais importante, é um elemento essencial do custo do uso do Tempo de execução (contêineres maiores custam mais). Use um valor maior aqui quando o processamento exigir mais memória ou CPU, mas tenha cuidado para não desperdiçar recursos, pois quanto maior for o contêiner, menor será o throughput geral.
+Você pode especificar a memória alocada para um contêiner de ação em megabytes usando o parâmetro `memorySize`. Atualmente, esse parâmetro também define quanto acesso ao CPU o contêiner recebe e, mais importante, é um elemento essencial do custo de usar o Tempo de execução (contêineres maiores custam mais). Use um valor maior aqui quando o processamento exigir mais memória ou CPU, mas tenha cuidado para não desperdiçar recursos, pois quanto maior for o contêiner, menor será a taxa de transferência geral.
 
-Além disso, é possível controlar a simultaneidade da ação em um contêiner usando a configuração `concurrency`. Essa configuração é o número de ativações simultâneas que um único contêiner (da mesma ação) obtém. Nesse modelo, o container de ação é como um servidor Node.js que recebe várias solicitações simultâneas, até esse limite. O `memorySize` padrão no tempo de execução está definido como 200 MB, ideal para ações App Builder menores. Para aplicativos Asset Compute, esse padrão pode ser excessivo devido ao processamento local mais intenso e ao uso de disco. Alguns aplicativos, dependendo de sua implementação, também podem não funcionar bem com a atividade simultânea. O SDK do Asset Compute garante que as ativações sejam separadas gravando arquivos em pastas exclusivas diferentes.
+Além disso, é possível controlar a simultaneidade da ação em um contêiner usando a configuração `concurrency`. Essa configuração é o número de ativações simultâneas que um único contêiner (da mesma ação) obtém. Nesse modelo, o container de ação é como um servidor Node.js que recebe várias solicitações simultâneas, até esse limite. O `memorySize` padrão no tempo de execução está definido como 200 MB, ideal para ações App Builder menores. Para aplicativos do Asset Compute, esse padrão pode ser excessivo devido ao processamento local mais intenso e ao uso de disco. Alguns aplicativos, dependendo de sua implementação, também podem não funcionar bem com a atividade simultânea. O Asset Compute SDK garante que as ativações sejam separadas gravando arquivos em pastas exclusivas diferentes.
 
 Teste aplicativos para encontrar os números ideais para `concurrency` e `memorySize`. Contêineres maiores = limite de memória mais alto pode permitir mais simultaneidade, mas também pode ser um desperdício para tráfego mais baixo.
