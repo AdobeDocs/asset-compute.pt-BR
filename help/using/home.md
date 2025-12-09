@@ -15,7 +15,7 @@ O [!DNL Asset Compute Service] é um serviço escalonável e extensível do Adob
 
 Esta documentação abrange tópicos do [!DNL Asset Compute Service], como desenvolver, gerenciar, implantar e solucionar problemas do código personalizado. Para saber o que é um [!DNL Asset Compute Service], vá para esta [introdução](introduction.md). Consulte também [o que o serviço pode fazer por você](introduction.md#possible-use-cases-benefits).
 
-O [!DNL Asset Compute Service] oferece suporte à conversão de muitos formatos de arquivo e integra-se com muitos serviços da Adobe. Consulte a lista de [formatos de arquivo e serviços de integração compatíveis](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
+O [!DNL Asset Compute Service] oferece suporte à conversão de muitos formatos de arquivo e integra-se com muitos serviços da Adobe. Consulte a lista de [formatos de arquivo e serviços de integração compatíveis](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 Veja uma visão geral sobre os [recursos de microsserviços de ativos disponíveis no [!DNL Adobe Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview) e como usar os microsserviços no [!DNL Experience Manager].
 
