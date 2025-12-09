@@ -1,8 +1,8 @@
 ---
 title: Introdução ao  [!DNL Asset Compute Service]
-description: "[!DNL Asset Compute Service] é um serviço de processamento de ativos nativo em nuvem que reduz a complexidade e melhora a escalabilidade."
+description: '[!DNL Asset Compute Service] é um serviço de processamento de ativos nativo em nuvem que reduz a complexidade e melhora a escalabilidade.'
 exl-id: f8c89f65-5a94-44f3-aaac-4612ae291101
-source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
+source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
 workflow-type: tm+mt
 source-wordcount: '278'
 ht-degree: 1%
@@ -13,9 +13,9 @@ ht-degree: 1%
 
 [!DNL Asset Compute Service] é um serviço escalonável e extensível do [!DNL Adobe Experience Cloud] para processar ativos digitais. Ele pode transformar imagens, vídeos, documentos e outros formatos de arquivo em diferentes representações, incluindo miniaturas, texto e metadados extraídos e arquivos.
 
-Os desenvolvedores têm a capacidade de plug-in de aplicativos de ativos personalizados (também chamados de trabalhadores personalizados) para atender a casos de uso personalizados. O serviço funciona no Adobe [!DNL I/O Runtime]. Pode ser estendido por meio de [!DNL Adobe Developer App Builder] aplicativos headless escritos em Node.js. Eles podem fazer operações personalizadas, como chamar APIs externas para executar operações de imagem ou aproveitar o suporte do [!DNL Adobe Sensei].
+Os desenvolvedores têm a capacidade de plug-in de aplicativos de ativos personalizados (também chamados de trabalhadores personalizados) para atender a casos de uso personalizados. O serviço funciona na Adobe [!DNL I/O Runtime]. Pode ser estendido por meio de [!DNL Adobe Developer App Builder] aplicativos headless escritos em Node.js. Eles podem fazer operações personalizadas, como chamar APIs externas para executar operações de imagem ou aproveitar o suporte do [!DNL Adobe Sensei].
 
-O [!DNL Adobe Developer App Builder] é uma estrutura para compilar e implantar aplicativos Web personalizados no Adobe [!DNL I/O Runtime] para estender soluções da Adobe Experience Cloud. Para criar aplicativos personalizados, os desenvolvedores podem aproveitar o [!DNL React Spectrum] (kit de ferramentas da interface do usuário do Adobe), criar microsserviços, criar eventos personalizados e orquestrar APIs. Consulte [documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/overview/).
+[!DNL Adobe Developer App Builder] é uma estrutura para criar e implantar aplicativos Web personalizados no Adobe [!DNL I/O Runtime] para estender soluções da Adobe Experience Cloud. Para criar aplicativos personalizados, os desenvolvedores podem aproveitar o [!DNL React Spectrum] (kit de ferramentas da interface do usuário da Adobe), criar microsserviços, criar eventos personalizados e orquestrar APIs. Consulte [documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/#).
 
 >[!NOTE]
 >
@@ -23,9 +23,9 @@ O [!DNL Adobe Developer App Builder] é uma estrutura para compilar e implantar 
 
 ## Casos de uso de [!DNL Asset Compute Service] com suporte {#possible-use-cases-benefits}
 
-O [!DNL Asset Compute Service] oferece suporte a alguns casos de uso comerciais comuns, como processamento básico de imagens, conversões específicas de aplicativos Adobe e criação de aplicativos personalizados que organizam requisitos comerciais complexos.
+O [!DNL Asset Compute Service] oferece suporte a alguns casos de uso comerciais comuns, como processamento básico de imagens; conversões específicas de aplicativos Adobe e criação de aplicativos personalizados que organizam requisitos comerciais complexos.
 
-Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para diferentes tipos de arquivos, renderizações de imagem de alta qualidade para os [formatos de arquivo com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support). Consulte [casos de uso com suporte por meio da configuração personalizada](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para diferentes tipos de arquivos, renderizações de imagem de alta qualidade para os [formatos de arquivo com suporte](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support). Consulte [casos de uso com suporte por meio da configuração personalizada](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -45,8 +45,8 @@ Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para d
 >[!MORELIKETHIS]
 >
 >* [Visão geral do processamento de ativos com microsserviços de ativos no [!DNL Adobe Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview).
->* [Documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/overview).
->* [Formatos de arquivo com suporte para processamento](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
+>* [Documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/#).
+>* [Formatos de arquivo com suporte para processamento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 <!-- **TBD:**
 * Clarify the service can only be used within AEM as Cloud Service. The docs provided as context for custom application developers. Not to be used as a standalone service.

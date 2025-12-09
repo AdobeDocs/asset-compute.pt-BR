@@ -2,9 +2,9 @@
 title: Entender o funcionamento de um aplicativo personalizado
 description: Trabalho interno do  [!DNL Asset Compute Service] aplicativo personalizado para ajudar a entender como ele funciona.
 exl-id: a3ee6549-9411-4839-9eff-62947d8f0e42
-source-git-commit: f15b9819d3319d22deccdf7e39c0f72728baaa39
+source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
 workflow-type: tm+mt
-source-wordcount: '691'
+source-wordcount: '689'
 ht-degree: 0%
 
 ---
@@ -19,7 +19,7 @@ Use a ilustração a seguir para entender o fluxo de trabalho completo quando um
 
 ## Registro {#registration}
 
-O cliente deve chamar [`/register`](api.md#register) uma vez antes da primeira solicitação para [`/process`](api.md#process-request) para que possa configurar e recuperar a URL do diário para receber Adobe [!DNL I/O Events] Eventos para Adobe Asset compute.
+O cliente deve chamar [`/register`](api.md#register) uma vez antes da primeira solicitação para [`/process`](api.md#process-request) para que possa configurar e recuperar a URL do diário para receber Eventos do Adobe [!DNL I/O Events] para Adobe Asset Compute.
 
 ```sh
 curl -X POST \
@@ -70,7 +70,7 @@ Um exemplo de solicitação de processamento de aplicativo personalizado está a
 
 O [!DNL Asset Compute Service] envia as solicitações de representação do aplicativo personalizado para o aplicativo personalizado. Ele usa um POST HTTP para o URL de aplicativo fornecido, que é o URL de ação da Web seguro do App Builder. Todas as solicitações usam o protocolo HTTPS para maximizar a segurança dos dados.
 
-O [SDK do Asset Compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) usado por um aplicativo personalizado lida com a solicitação POST HTTP. Também é capaz de fazer download da origem, carregar representações, enviar Adobe [!DNL I/O Events] e manipular erros.
+O [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) usado por um aplicativo personalizado lida com a solicitação HTTP POST. Também é possível baixar a origem, carregar representações, enviar o Adobe [!DNL I/O Events] e manipular erros.
 
 <!-- TBD: Add the application diagram. -->
 
@@ -96,7 +96,7 @@ exports.main = worker(async (source, rendition) => {
 
 ### Baixar arquivos de origem {#download-source}
 
-Um aplicativo personalizado só lida com arquivos locais. O [SDK do Asset Compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) manipula o download do arquivo de origem.
+Um aplicativo personalizado só lida com arquivos locais. O [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) manipula o download do arquivo de origem.
 
 ### Criação de representação {#rendition-creation}
 
@@ -106,21 +106,21 @@ A função de retorno de chamada tem acesso aos objetos [origem](https://github.
 
 A simplificação excessiva do exemplo é feita para ilustrar e se concentrar na anatomia de um aplicativo personalizado. O aplicativo apenas copia o arquivo de origem para o destino da representação.
 
-Para obter mais informações sobre os parâmetros de retorno de chamada de representação, consulte [API do SDK do Asset Compute](https://github.com/adobe/asset-compute-sdk#api-details).
+Para obter mais informações sobre os parâmetros de retorno de chamada de representação, consulte [API do Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#api-details).
 
 ### Fazer upload de representações {#upload-rendition}
 
-Depois que cada representação é criada e armazenada em um arquivo com o caminho fornecido por `rendition.path`, o [SDK do Asset Compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) carrega cada representação em um armazenamento na nuvem (AWS ou Azure). Um aplicativo personalizado obtém várias representações ao mesmo tempo se, e somente se, a solicitação recebida tiver várias representações apontando para o mesmo URL de aplicativo. O upload para o armazenamento na nuvem é feito após cada representação e antes de executar o retorno de chamada para a próxima representação.
+Depois que cada representação é criada e armazenada em um arquivo com o caminho fornecido por `rendition.path`, o [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) carrega cada representação em um armazenamento na nuvem (AWS ou Azure). Um aplicativo personalizado obtém várias representações ao mesmo tempo se, e somente se, a solicitação recebida tiver várias representações apontando para o mesmo URL de aplicativo. O upload para o armazenamento na nuvem é feito após cada representação e antes de executar o retorno de chamada para a próxima representação.
 
 O `batchWorker()` tem um comportamento diferente. Ele processa todas as representações e, somente depois que todas tiverem sido processadas, faz o upload delas.
 
-## [!DNL Adobe I/O] Eventos {#aio-events}
+## [!DNL Adobe I/O Events] {#aio-events}
 
-O SDK envia o Adobe [!DNL I/O Events] para cada representação. Estes eventos são do tipo `rendition_created` ou `rendition_failed`, dependendo do resultado. Para obter mais informações, consulte [Asset compute de eventos assíncronos](api.md#asynchronous-events).
+O SDK envia o Adobe [!DNL I/O Events] para cada representação. Estes eventos são do tipo `rendition_created` ou `rendition_failed`, dependendo do resultado. Para obter mais informações, consulte [Eventos assíncronos do Asset Compute](api.md#asynchronous-events).
 
-## Receber [!DNL Adobe I/O] Eventos {#receive-aio-events}
+## Receber [!DNL Adobe I/O Events] {#receive-aio-events}
 
-O cliente consulta o diário de Adobe [!DNL I/O Events] de acordo com sua lógica de consumo. A URL inicial do diário é a fornecida na resposta da API `/register`. Eventos podem ser identificados usando o `requestId` que está presente nos eventos e é o mesmo retornado em `/process`. Cada representação tem um evento separado que é enviado assim que a representação é carregada (ou falha). Ao receber um evento correspondente, o cliente pode exibir ou manipular as representações resultantes.
+O cliente sonda o diário [!DNL I/O Events] do Adobe de acordo com sua lógica de consumo. A URL inicial do diário é a fornecida na resposta da API `/register`. Eventos podem ser identificados usando o `requestId` que está presente nos eventos e é o mesmo retornado em `/process`. Cada representação tem um evento separado que é enviado assim que a representação é carregada (ou falha). Ao receber um evento correspondente, o cliente pode exibir ou manipular as representações resultantes.
 
 A biblioteca JavaScript [`asset-compute-client`](https://github.com/adobe/asset-compute-client#usage) simplifica a sondagem do diário usando o método `waitActivation()` para obter todos os eventos.
 
@@ -140,7 +140,7 @@ await Promise.all(events.map(event => {
 }));
 ```
 
-Para obter detalhes sobre como obter eventos de diário, consulte Adobe [[!DNL I/O Events] API](https://developer.adobe.com/events/docs/guides/api/journaling_api/).
+Para obter detalhes sobre como obter eventos de diário, consulte Adobe [[!DNL I/O Events] API](https://developer.adobe.com/events/docs/guides/api/journaling-api#).
 
 <!-- TBD:
 * Illustration of the controls/data flow.

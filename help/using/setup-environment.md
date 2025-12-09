@@ -2,10 +2,10 @@
 title: Definir o ambiente de desenvolvimento necessário para  [!DNL Asset Compute Service]
 description: Configuração do ambiente de desenvolvedor para  [!DNL Asset Compute Service]  para começar a criar e testar o código personalizado.
 exl-id: 91c12889-01d8-4757-9bdd-f73c491cd9d5
-source-git-commit: db38b9dc27505aa7e04cf58a646005fc2e0e8782
+source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
 workflow-type: tm+mt
-source-wordcount: '359'
-ht-degree: 1%
+source-wordcount: '360'
+ht-degree: 2%
 
 ---
 
@@ -13,16 +13,16 @@ ht-degree: 1%
 
 Para criar uma configuração que permita o desenvolvimento do [!DNL Asset Compute Service], siga estes requisitos e instruções.
 
-1. [Adquirir acesso e credenciais](https://developer.adobe.com/app-builder/docs/getting_started/#acquire-access-and-credentials) para [!DNL Adobe Developer App Builder].
+1. [Adquirir acesso e credenciais](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#acquire-access-and-credentials) para [!DNL Adobe Developer App Builder].
 
-1. [Configurar o ambiente local](https://developer.adobe.com/app-builder/docs/getting_started/#local-environment-set-up) e as ferramentas necessárias.
+1. [Configurar o ambiente local](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#local-environment-set-up) e as ferramentas necessárias.
 
 1. Outras ferramentas que ajudam você a começar a desenvolver sem problemas são:
 
    * [Git](https://git-scm.com/)
    * [Área de Trabalho do Docker](https://www.docker.com/get-started)
-   * [NodeJS](https://nodejs.org) (v14 LTS, versões ímpares não são recomendadas) e [NPM](https://www.npmjs.com). O usuário do OS X HomeBrew pode fazer `brew install node` para instalar ambos. Caso contrário, baixe-o da [página de download do NodeJS](https://nodejs.org/en/)
-   * Um IDE que é bom para NodeJS, o Adobe recomenda [Visual Studio Code (VS Code)](https://code.visualstudio.com), pois é o IDE suportado para o depurador. Você pode usar qualquer outro IDE como um editor de código, mas o uso avançado (por exemplo, depurador) ainda não é suportado
+   * [NodeJS](https://nodejs.org) (v14 LTS, versões ímpares não são recomendadas) e [NPM](https://www.npmjs.com). O usuário do OS X HomeBrew pode fazer `brew install node` para instalar ambos. Caso contrário, baixe-o da [página de download do NodeJS](https://nodejs.org/pt)
+   * Um IDE que é bom para NodeJS, a Adobe recomenda o [Visual Studio Code (VS Code)](https://code.visualstudio.com), pois é o IDE com suporte para o depurador. Você pode usar qualquer outro IDE como um editor de código, mas o uso avançado (por exemplo, depurador) ainda não é suportado
    * Instalar o Adobe mais recente [[!DNL aio-cli]](https://github.com/adobe/aio-cli) (`aio`)
    <!-- - install using `npm install -g @adobe/aio-cli@7.1.0` -->
 
@@ -40,13 +40,13 @@ Para criar uma configuração que permita o desenvolvimento do [!DNL Asset Compu
 
 1. Faça logon no [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis). Certifique-se de fazer parte da mesma organização [!DNL Experience Cloud] que o [!DNL Experience Manager] como uma integração [!DNL Cloud Service]. Para obter mais informações sobre o Adobe Developer Console, vá para [Documentação do console](https://developer.adobe.com/developer-console/docs/guides/).
 
-1. [Criar um projeto do App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app/). Clique em **[!UICONTROL Criar novo projeto]** > **[!UICONTROL Projeto a partir do modelo]**. Selecione App Builder. Ele cria um novo Projeto do App Builder com dois espaços de trabalho: `Production` e `Stage`. Adicione mais espaços de trabalho, por exemplo `Development`, conforme necessário.
+1. [Criar um projeto do App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#). Clique em **[!UICONTROL Criar novo projeto]** > **[!UICONTROL Projeto a partir do modelo]**. Selecione App Builder. Ele cria um novo Projeto do App Builder com dois espaços de trabalho: `Production` e `Stage`. Adicione mais espaços de trabalho, por exemplo `Development`, conforme necessário.
 
 1. No Projeto do App Builder, selecione um espaço de trabalho e assine os serviços necessários para o Asset Compute. Clique em **Adicionar ao Projeto** > **API** e adicione os serviços `Asset Compute`, `IO Events` e `IO Events Management`. Ao adicionar a primeira API, ele solicita a criação de uma chave privada. Salve essas informações em sua máquina, pois você precisa dessa chave para testar seu aplicativo personalizado com a ferramenta de desenvolvedor.
 
    >[!NOTE]
    >
-   >O JWT está obsoleto e a chave privada não está disponível para download. Enquanto estamos trabalhando na atualização das ferramentas de teste, observe que os trabalhadores personalizados criados usando OAuth podem ser implantados, mas devtools não funcionariam.
+   >O JWT está obsoleto e a chave privada não está disponível para download. Enquanto o Adobe está trabalhando na atualização das ferramentas de teste, observe que os trabalhadores personalizados criados usando OAuth podem ser implantados, mas devtools não funcionariam.
 
 ## Próxima etapa {#next-step}
 

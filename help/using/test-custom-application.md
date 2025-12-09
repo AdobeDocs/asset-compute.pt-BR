@@ -2,7 +2,7 @@
 title: Testar e depurar [!DNL Asset Compute Service] aplicativo personalizado
 description: Testar e depurar  [!DNL Asset Compute Service] aplicativo personalizado.
 exl-id: c2534904-0a07-465e-acea-3cb578d3bc08
-source-git-commit: c6f747ebd6d1b17834f1af0837609a148804f8a9
+source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
 workflow-type: tm+mt
 source-wordcount: '775'
 ht-degree: 0%
@@ -31,7 +31,7 @@ O plug-in [aio-cli-plugin-asset-compute](https://github.com/adobe/aio-cli-plugin
 
 ### Estrutura de teste da unidade de aplicativos {#unit-test-framework}
 
-A estrutura de teste da unidade de aplicativo do Asset Compute permite testar aplicativos sem gravar nenhum código. Depende do princípio de origem para representação de arquivos de aplicativos. Uma determinada estrutura de arquivos e pastas deve ser configurada para definir casos de teste com arquivos de origem de teste, parâmetros opcionais, representações esperadas e scripts de validação personalizados. Por padrão, as representações são comparadas em relação à igualdade de bytes. Além disso, os serviços HTTP externos podem ser facilmente ridicularizados usando arquivos JSON simples.
+A estrutura de teste da unidade de aplicativos do Asset Compute permite testar aplicativos sem gravar nenhum código. Depende do princípio de origem para representação de arquivos de aplicativos. Uma determinada estrutura de arquivos e pastas deve ser configurada para definir casos de teste com arquivos de origem de teste, parâmetros opcionais, representações esperadas e scripts de validação personalizados. Por padrão, as representações são comparadas em relação à igualdade de bytes. Além disso, os serviços HTTP externos podem ser facilmente ridicularizados usando arquivos JSON simples.
 
 ### Adicionar testes {#add-tests}
 
@@ -105,7 +105,7 @@ O exemplo `worker-animal-pictures` contém um [arquivo modelo](https://github.co
 
 #### Compartilhar arquivos entre casos de teste {#share-files-across-test-cases}
 
-A Adobe recomenda o uso de symlinks relativos se você compartilhar scripts `file.*`, `params.json` ou `validate` em vários testes. Eles são compatíveis com o Git. Atribua um nome exclusivo aos arquivos compartilhados, pois você pode ter arquivos diferentes. No exemplo abaixo, os testes estão misturando e correspondendo a alguns arquivos compartilhados e seus próprios:
+A Adobe recomenda usar symlinks relativos se você compartilhar scripts `file.*`, `params.json` ou `validate` em vários testes. Eles são compatíveis com o Git. Atribua um nome exclusivo aos arquivos compartilhados, pois você pode ter arquivos diferentes. No exemplo abaixo, os testes estão misturando e correspondendo a alguns arquivos compartilhados e seus próprios:
 
 ```json
 tests/
@@ -158,13 +158,13 @@ Arquivo de parâmetros com motivo do erro:
 }
 ```
 
-Veja uma lista completa e uma descrição dos [motivos de erro do Asset compute](https://github.com/adobe/asset-compute-commons#error-reasons).
+Veja uma lista completa e uma descrição dos [motivos de erro do Asset Compute](https://github.com/adobe/asset-compute-commons#error-reasons).
 
 ## Depurar um aplicativo personalizado {#debug-custom-worker}
 
 As etapas a seguir mostram como você pode depurar seu aplicativo personalizado usando o Visual Studio Code. Ele permite a visualização de logs em tempo real, pontos de interrupção de ocorrência e código de passo a passo, bem como o recarregamento em tempo real de alterações de código local em cada ativação.
 
-O `aio` pronto para uso automatiza muitas dessas etapas. Vá para a seção Depuração do Aplicativo na [documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/getting_started/first_app). Por enquanto, as etapas abaixo incluem uma solução alternativa.
+O `aio` pronto para uso automatiza muitas dessas etapas. Vá para a seção Depuração do Aplicativo na [documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#). Por enquanto, as etapas abaixo incluem uma solução alternativa.
 
 1. Instale o [wskdebug](https://github.com/apache/openwhisk-wskdebug) mais recente do GitHub e o [ngrok](https://www.npmjs.com/package/ngrok) opcional.
 
@@ -176,7 +176,7 @@ O `aio` pronto para uso automatiza muitas dessas etapas. Vá para a seção Depu
 1. Faça adições às configurações do usuário no arquivo JSON. Ele continua usando o depurador de código do Visual Studio antigo. O novo tem [alguns problemas](https://github.com/apache/openwhisk-wskdebug/issues/74) com wskdebug: `"debug.javascript.usePreview": false`.
 1. Feche todas as instâncias de aplicativos abertas por meio do `aio app run`.
 1. Implante o código mais recente usando `aio app deploy`.
-1. Execute somente o Devtool do Asset compute usando `aio asset-compute devtool`. Mantenha-o aberto.
+1. Execute somente o Asset Compute Devtool usando `aio asset-compute devtool`. Mantenha-o aberto.
 1. No Editor de Código do Visual Studio, adicione a seguinte configuração de depuração ao seu `launch.json`:
 
    ```json
@@ -200,7 +200,7 @@ O `aio` pronto para uso automatiza muitas dessas etapas. Vá para a seção Depu
 
    Buscar `ACTION NAME` da saída de `aio app deploy`.
 
-1. Selecione `wskdebug worker` na configuração executar/depurar e pressione o ícone reproduzir. Aguarde até que ele seja iniciado e exiba **[!UICONTROL Pronto para ativações]** na janela **[!UICONTROL Console de Depuração]**.
+1. Selecione `wskdebug worker` na configuração executada/depurada e pressione o ícone reproduzir. Aguarde até que ele seja iniciado e exiba **[!UICONTROL Pronto para ativações]** na janela **[!UICONTROL Console de Depuração]**.
 
 1. Clique em **[!UICONTROL executar]** no Devtool. Você pode ver as ações em execução no editor de código do Visual Studio e os logs começarem a ser exibidos.
 
@@ -210,4 +210,4 @@ Quaisquer alterações de código são carregadas em tempo real e entram em vigo
 
 >[!NOTE]
 >
->Duas ativações estão presentes para cada solicitação em aplicativos personalizados. A primeira solicitação é uma ação da Web chamada a si mesma de forma assíncrona no código do SDK. A segunda ativação é aquela que atinge seu código.
+>Duas ativações estão presentes para cada solicitação em aplicativos personalizados. A primeira solicitação é uma ação da Web que se chama de forma assíncrona no código SDK. A segunda ativação é aquela que atinge seu código.
