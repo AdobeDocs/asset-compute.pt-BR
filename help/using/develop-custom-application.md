@@ -2,9 +2,9 @@
 title: Desenvolver para  [!DNL Asset Compute Service]
 description: Criar aplicativos personalizados usando o  [!DNL Asset Compute Service].
 exl-id: a0c59752-564b-4bb6-9833-ab7c58a7f38e
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '1489'
+source-wordcount: '1722'
 ht-degree: 0%
 
 ---
@@ -21,13 +21,13 @@ Antes de começar a desenvolver um aplicativo personalizado:
 
 Verifique se o [Adobe aio-cli](https://github.com/adobe/aio-cli) está instalado localmente.
 
-1. Para criar um aplicativo personalizado, [crie um projeto do App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#4-bootstrapping-new-app-using-the-cli). Para fazer isso, execute o `aio app init <app-name>` no terminal.
+1. Para criar um aplicativo personalizado, [crie um projeto do App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#4-bootstrapping-new-app-using-the-cli). Para fazer isso, execute o `aio app init <app-name>` em seu terminal.
 
-   Se você ainda não tiver feito logon, este comando solicitará que um navegador entre no [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) com sua Adobe ID. Consulte [aqui](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli) para obter mais informações sobre como entrar pela cli.
+   Se você ainda não tiver feito logon, esse comando exibirá um navegador solicitando que você faça logon no [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) com sua Adobe ID. Veja [aqui](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli) para obter mais informações sobre como entrar a partir da cli.
 
-   A Adobe recomenda que você faça logon primeiro. Se tiver problemas, siga as instruções [para criar um aplicativo sem fazer logon](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#42-developer-is-not-logged-in-as-enterprise-organization-user).
+   O Adobe recomenda que você faça logon primeiro. Se você estiver com problemas, siga as instruções [para criar um aplicativo sem fazer logon](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#42-developer-is-not-logged-in-as-enterprise-organization-user).
 
-1. Depois de fazer logon, siga os prompts na CLI e selecione os `Organization`, `Project` e `Workspace` a serem usados para o aplicativo. Escolha o projeto e o espaço de trabalho criados quando você [configurou o ambiente](setup-environment.md). Quando solicitado `Which extension point(s) do you wish to implement ?`, certifique-se de selecionar `DX Asset Compute Worker`:
+1. Após fazer logon, siga os prompts na CLI e selecione os `Organization`, `Project` e `Workspace` a serem usados para o aplicativo. Escolha o projeto e o espaço de trabalho que você criou quando [configurou o ambiente](setup-environment.md). Quando solicitado `Which extension point(s) do you wish to implement ?`, certifique-se de selecionar `DX Asset Compute Worker`:
 
    ```sh
    $ aio app init <app-name>
@@ -60,36 +60,37 @@ Verifique se o [Adobe aio-cli](https://github.com/adobe/aio-cli) está instalado
    ◯ Generic
    ```
 
-1. Siga o restante dos prompts e abra o novo aplicativo no Visual Studio Code (ou seu editor de código favorito). Ele contém o andaime e o código de amostra de um aplicativo personalizado.
+1. Siga o restante dos prompts e abra o novo aplicativo no Visual Studio Code (ou no seu editor de código favorito). Contém o andaime e o código de amostra para um aplicativo personalizado.
 
-   Leia aqui sobre os [principais componentes de um aplicativo App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#5-anatomy-of-an-app-builder-application).
+   Leia aqui sobre os [componentes principais de um aplicativo do App Builder](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#5-anatomy-of-an-app-builder-application).
 
-   O aplicativo modelo usa o [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) da Adobe para fazer upload, download e orquestração de representações de aplicativos, de modo que os desenvolvedores só precisam implementar a lógica de aplicativo personalizado. Na pasta `actions/<worker-name>`, o arquivo `index.js` é onde o código de aplicativo personalizado deve ser adicionado.
+   O aplicativo modelo utiliza o Adobe [SDK de Asset compute](https://github.com/adobe/asset-compute-sdk#asset-compute-sdk) para upload, download e orquestração de representações de aplicativos, de modo que os desenvolvedores precisam apenas implementar a lógica de aplicativo personalizada. Dentro da pasta `actions/<worker-name>`, o arquivo `index.js` é onde adicionar o código personalizado do aplicativo.
 
-Consulte [exemplos de aplicativos personalizados](#try-sample) para obter exemplos e ideias de aplicativos personalizados.
+Consulte [aplicativos personalizados de exemplo](#try-sample) para ver exemplos e ideias de aplicativos personalizados.
 
 ### Adicionar credenciais {#add-credentials}
 
-Conforme você faz logon ao criar o aplicativo, a maioria das credenciais do App Builder é coletada no arquivo ENV. No entanto, o uso da ferramenta de desenvolvedor requer credenciais adicionais.
+À medida que você faz logon ao criar o aplicativo, a maioria das credenciais do App Builder é coletada no arquivo ENV. No entanto, o uso da ferramenta de desenvolvedor requer credenciais adicionais.
 
-<!-- TBD: Check if manual setup of credentials is required.
+<!-- 
+TBD: Check if manual setup of credentials is required.
 Manual set up of credentials is removed from troubleshooting and best practices page. Link was broken.
 If you did not log in, refer to our troubleshooting guide to [set up credentials manually](troubleshooting.md).
 -->
 
-#### Credenciais de armazenamento da ferramenta do desenvolvedor {#developer-tool-credentials}
+#### Credenciais de armazenamento da ferramenta de desenvolvedor {#developer-tool-credentials}
 
-A ferramenta para desenvolvedores avaliarem aplicativos personalizados usando o [!DNL Asset Compute service] requer o uso de um contêiner de armazenamento na nuvem. Esse container é essencial para armazenar arquivos de teste e para o recebimento e a apresentação de representações produzidas pelos aplicativos.
+A ferramenta para desenvolvedores avaliarem aplicativos personalizados usando o [!DNL Asset Compute service] exige o uso de um contêiner de armazenamento na nuvem. Esse contêiner é essencial para armazenar arquivos de teste e para a recepção e apresentação de representações produzidas pelos aplicativos.
 
 >[!NOTE]
 >
->Este contêiner é separado do armazenamento na nuvem de [!DNL Adobe Experience Manager] como [!DNL Cloud Service]. Ela só se aplica ao desenvolvimento e teste com a ferramenta de desenvolvedor do Asset Compute.
+>Este contêiner é separado do armazenamento em nuvem de [!DNL Adobe Experience Manager] como [!DNL Cloud Service]. Aplica-se apenas a desenvolvimento e teste com a ferramenta de desenvolvedor de Asset compute.
 
 Verifique se você tem acesso a um [contêiner de armazenamento na nuvem com suporte](https://github.com/adobe/asset-compute-devtool#prerequisites). Esse contêiner é usado coletivamente por vários desenvolvedores para diferentes projetos sempre que necessário.
 
 #### Adicionar credenciais ao arquivo ENV {#add-credentials-env-file}
 
-Insira as credenciais subsequentes da ferramenta de desenvolvimento no arquivo `.env`. O arquivo está localizado na raiz do projeto do App Builder:
+Insira as credenciais subsequentes para a ferramenta de desenvolvimento no arquivo `.env`. O arquivo está localizado na raiz do projeto do App Builder:
 <!--
 1. Add the absolute path to the private key file created while adding services to your App Builder Project:
 
@@ -101,16 +102,16 @@ Insira as credenciais subsequentes da ferramenta de desenvolvimento no arquivo `
    >
    >JWT is deprecated and Private Key is not available for download. While we are working on updating the testing tools, note that custom workers created using OAuth can be deployed but devtools would not work.
 -->
-1. Baixe o arquivo da Adobe Developer Console. Vá para a raiz do projeto e clique em &quot;Baixar tudo&quot; no canto superior direito. O arquivo é baixado com `<namespace>-<workspace>.json` como o nome do arquivo. Siga uma das seguintes opções:
+1. Baixe o arquivo no Adobe Developer Console. Acesse a raiz do projeto e clique em “Baixar tudo” no canto superior direito. O arquivo é baixado com `<namespace>-<workspace>.json` como o nome do arquivo. Siga uma das seguintes opções:
 
-   * Renomeie o arquivo como `console.json` e mova-o para a raiz do seu projeto.
-   * Como opção, adicione o caminho absoluto ao arquivo JSON de integração do Adobe Developer Console. Este arquivo é o mesmo arquivo [`console.json`](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#42-developer-is-not-logged-in-as-enterprise-organization-user) que foi baixado no espaço de trabalho do projeto.
+   * Renomeie o arquivo como `console.json` e mova-o para a raiz do projeto.
+   * Opcionalmente, você pode adicionar o caminho absoluto para o arquivo JSON de integração do Console do Adobe Developer. Este arquivo é o mesmo arquivo [`console.json`](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#42-developer-is-not-logged-in-as-enterprise-organization-user) baixado no espaço de trabalho do projeto.
 
      ```conf
      ASSET_COMPUTE_INTEGRATION_FILE_PATH=
      ```
 
-1. Adicione credenciais de armazenamento do S3 ou do Azure. Você só precisa de acesso a uma solução de armazenamento na nuvem.
+1. Adicione credenciais de armazenamento S3 ou Azure. Você só precisa acessar uma solução de armazenamento na nuvem.
 
    ```conf
    # S3 credentials
@@ -127,13 +128,13 @@ Insira as credenciais subsequentes da ferramenta de desenvolvimento no arquivo `
 
 >[!TIP]
 >
->O arquivo `config.json` contém credenciais. A partir do projeto, adicione o arquivo JSON ao arquivo `.gitignore` para impedir seu compartilhamento. O mesmo se aplica aos arquivos `.env` e `.aio`.
+>O arquivo `config.json` contém credenciais. No projeto, adicione o arquivo JSON ao arquivo `.gitignore` para impedir seu compartilhamento. O mesmo se aplica aos arquivos `.env` e `.aio`.
 
 ## Executar o aplicativo {#run-custom-application}
 
-Antes de executar o aplicativo com a ferramenta de desenvolvedor do Asset Compute, configure corretamente as [credenciais](#developer-tool-credentials).
+Antes de executar o aplicativo com a ferramenta Asset compute Developer, configure corretamente as [credenciais](#developer-tool-credentials).
 
-Para executar o aplicativo na ferramenta de desenvolvedor, use o comando `aio app run`. Ele implanta a ação no Adobe [!DNL I/O Runtime] e inicia a ferramenta de desenvolvimento no computador local. Essa ferramenta é usada para testar solicitações de aplicativos durante o desenvolvimento. Este é um exemplo de solicitação de representação:
+Para executar o aplicativo na ferramenta de desenvolvedor, use o comando `aio app run`. Ele implanta a ação no Adobe [!DNL I/O Runtime] e inicia a ferramenta de desenvolvimento no computador local. Essa ferramenta é usada para testar solicitações de aplicativos durante o desenvolvimento. Veja um exemplo de solicitação de representação:
 
 ```json
 "renditions": [
@@ -155,7 +156,7 @@ Veja [aqui](test-custom-application.md) como testar e depurar seu aplicativo. Qu
 Veja a seguir exemplos de aplicativos personalizados:
 
 * [worker-basic](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-basic)
-* [imagens-de-animais-de-trabalho](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-animal-pictures)
+* [worker-animal-pictures](https://github.com/adobe/asset-compute-example-workers/tree/master/projects/worker-animal-pictures)
 
 ### Aplicativo personalizado de modelo {#template-custom-application}
 
@@ -191,7 +192,8 @@ exports.main = worker(async function (source, rendition) {
 
 Por exemplo, o [`worker-animal-pictures`](https://github.com/adobe/asset-compute-example-workers/blob/master/projects/worker-animal-pictures/worker-animal-pictures.js#L46) faz uma solicitação de busca para uma URL estática da Wikimedia usando a biblioteca [`node-httptransfer`](https://github.com/adobe/node-httptransfer#node-httptransfer).
 
-<!-- TBD: Revisit later to see if this note is required.
+<!-- 
+TBD: Revisit later to see if this note is required.
 >[!NOTE]
 >
 >For extra authorization for these API calls, see [custom authorization checks](#custom-authorization-checks).
@@ -230,7 +232,8 @@ Por padrão, os aplicativos personalizados do Asset Compute vêm com verificaç�
 
 ### Acessar outras APIs do Adobe {#access-adobe-apis}
 
-<!-- TBD: Revisit this section. Where do we document console workspace creation?
+<!-- 
+TBD: Revisit this section. Where do we document console workspace creation?
 -->
 
 Adicione os serviços de API ao espaço de trabalho do Console [!DNL Asset Compute] criado na configuração. Esses serviços fazem parte do token de acesso JWT gerado por [!DNL Asset Compute Service]. O token e outras credenciais podem ser acessados dentro do objeto de ação de aplicativo `params`.

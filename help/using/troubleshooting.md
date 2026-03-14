@@ -2,9 +2,9 @@
 title: Solução de problemas [!DNL Asset Compute Service]
 description: Solucione problemas e depure aplicativos personalizados usando o [!DNL Asset Compute Service].
 exl-id: 017fff91-e5e9-4a30-babf-5faa1ebefc2f
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '273'
+source-wordcount: '293'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ Algumas dicas de solução de problemas genéricas que podem ajudar você a solu
 
 ## Problemas de logon por meio do Adobe [!DNL aio-cli] {#login-via-aio-cli}
 
-Se tiver problemas para fazer logon no [!DNL Adobe Developer Console] [por meio do Adobe [!DNL aio-cli]](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli), adicione manualmente as credenciais necessárias para desenvolver, testar e implantar seu aplicativo personalizado:
+Se você tiver problemas para fazer logon no [!DNL Adobe Developer Console] [por meio da Adobe [!DNL aio-cli]](https://developer.adobe.com/app-builder/docs/get_started/app_builder_get_started/first-app#3-signing-in-from-cli), adicione manualmente as credenciais necessárias para desenvolver, testar e implantar seu aplicativo personalizado:
 
 1. Navegue até o projeto e o espaço de trabalho do Adobe Developer App Builder no [Adobe Developer Console](https://developer.adobe.com/console/user/servicesandapis) e pressione **[!UICONTROL Baixar]** no canto superior direito. Abra este arquivo e salve este JSON em um local seguro em sua máquina.
 
@@ -43,7 +43,8 @@ Se tiver problemas para fazer logon no [!DNL Adobe Developer Console] [por meio 
 
 1. Configure o restante das [credenciais necessárias](develop-custom-application.md) para a ferramenta de desenvolvedor.
 
-<!-- TBD for later:
+<!-- 
+TBD for later:
 Add any best practices for developers in this section:
 * Any items to take care of when creating projects.
 * Any naming conventions, reserved keywords, etc.?

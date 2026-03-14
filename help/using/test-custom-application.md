@@ -2,9 +2,9 @@
 title: Testar e depurar [!DNL Asset Compute Service] aplicativo personalizado
 description: Testar e depurar  [!DNL Asset Compute Service] aplicativo personalizado.
 exl-id: c2534904-0a07-465e-acea-3cb578d3bc08
-source-git-commit: f199cecfe4409e2370b30783f984062196dd807d
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '775'
+source-wordcount: '855'
 ht-degree: 0%
 
 ---
@@ -19,7 +19,8 @@ Instale o [Docker Desktop](https://www.docker.com/get-started) no computador. Pa
 $ aio app test
 ```
 
-<!-- TBD
+<!-- 
+TBD
 To run tests for a custom application, run `aio asset-compute test-worker` command at the root of the custom application application.
 
 Document interactively running `adobe-asset-compute` commands `test-worker` and `run-worker`.

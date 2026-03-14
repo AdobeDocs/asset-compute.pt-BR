@@ -2,10 +2,10 @@
 title: Definir o ambiente de desenvolvimento necessário para  [!DNL Asset Compute Service]
 description: Configuração do ambiente de desenvolvedor para  [!DNL Asset Compute Service]  para começar a criar e testar o código personalizado.
 exl-id: 91c12889-01d8-4757-9bdd-f73c491cd9d5
-source-git-commit: 63f83ff33ac6cd090fac4f6db18000155f464643
+source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
 workflow-type: tm+mt
-source-wordcount: '360'
-ht-degree: 2%
+source-wordcount: '416'
+ht-degree: 4%
 
 ---
 
@@ -20,7 +20,7 @@ Para criar uma configuração que permita o desenvolvimento do [!DNL Asset Compu
 1. Outras ferramentas que ajudam você a começar a desenvolver sem problemas são:
 
    * [Git](https://git-scm.com/)
-   * [Área de Trabalho do Docker](https://www.docker.com/get-started)
+   * [Desktop Docker](https://www.docker.com/get-started)
    * [NodeJS](https://nodejs.org) (v14 LTS, versões ímpares não são recomendadas) e [NPM](https://www.npmjs.com). O usuário do OS X HomeBrew pode fazer `brew install node` para instalar ambos. Caso contrário, baixe-o da [página de download do NodeJS](https://nodejs.org/pt)
    * Um IDE que é bom para NodeJS, a Adobe recomenda o [Visual Studio Code (VS Code)](https://code.visualstudio.com), pois é o IDE com suporte para o depurador. Você pode usar qualquer outro IDE como um editor de código, mas o uso avançado (por exemplo, depurador) ainda não é suportado
    * Instalar o Adobe mais recente [[!DNL aio-cli]](https://github.com/adobe/aio-cli) (`aio`)
@@ -52,7 +52,8 @@ Para criar uma configuração que permita o desenvolvimento do [!DNL Asset Compu
 
 Com o ambiente configurado, você está pronto para [criar um aplicativo personalizado](develop-custom-application.md).
 
-<!-- More ideas:
+<!-- 
+More ideas:
  
 * Any steps in the beginning that lead to gotchas later should be called out for caution? For example,
   * don't change some defaults initially
