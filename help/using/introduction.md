@@ -2,9 +2,14 @@
 title: Introdução ao  [!DNL Asset Compute Service]
 description: '[!DNL Asset Compute Service] é um serviço de processamento de ativos nativo em nuvem que reduz a complexidade e melhora a escalabilidade.'
 exl-id: f8c89f65-5a94-44f3-aaac-4612ae291101
-source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
+TQID: https://experienceleague.adobe.com/7B0ghzyLWIZFe5sthLaorFf8w4Az7FKW4ces27eo8I0
+product_v2: id: d09181b5-a36a-43de-ba01-36641440bc43id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: a01bfd36-4ab8-4bf8-9dc0-5b45b890552eid: da0dfbce-df02-4f8b-b32d-a4e3b1d05085
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
-source-wordcount: '355'
+source-wordcount: 355
 ht-degree: 12%
 
 ---
@@ -25,7 +30,7 @@ Os desenvolvedores têm a capacidade de plug-in de aplicativos de ativos persona
 
 O [!DNL Asset Compute Service] oferece suporte a alguns casos de uso comerciais comuns, como processamento básico de imagens; conversões específicas de aplicativos Adobe e criação de aplicativos personalizados que organizam requisitos comerciais complexos.
 
-Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para diferentes tipos de arquivos, renderizações de imagem de alta qualidade para os [formatos de arquivo com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support). Consulte [casos de uso com suporte por meio da configuração personalizada](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+Você pode usar o serviço Web [!DNL Asset Compute] para gerar miniaturas para diferentes tipos de arquivos, renderizações de imagem de alta qualidade para os [formatos de arquivo com suporte](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support). Consulte [casos de uso com suporte por meio da configuração personalizada](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -47,7 +52,7 @@ TBD: Should this be mentioned in the docs?
 >
 >* [Visão geral do processamento de ativos com microsserviços de ativos no [!DNL Adobe Experience Manager] as a [!DNL Cloud Service]](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/asset-microservices-overview).
 >* [Documentação do Adobe Developer App Builder](https://developer.adobe.com/app-builder/docs/intro_and_overview/#).
->* [Formatos de arquivo com suporte para processamento](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
+>* [Formatos de arquivo com suporte para processamento](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 <!-- 
 **TBD:**
