@@ -2,16 +2,29 @@
 title: API HTTP [!DNL Asset Compute Service]
 description: API HTTP [!DNL Asset Compute Service] para criar aplicativos personalizados.
 exl-id: 4b63fdf9-9c0d-4af7-839d-a95e07509750
-source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
+TQID: https://experienceleague.adobe.com/fewAzOtKA-XTmpv-6Q0mlqXpalMWva6GpHlJSW6wPog
+product_v2:
+  - id: d09181b5-a36a-43de-ba01-36641440bc43
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2:
+  - id: a01bfd36-4ab8-4bf8-9dc0-5b45b890552e
+  - id: ae478996-b206-4712-9b0c-dc78a2644453
+  - id: da0dfbce-df02-4f8b-b32d-a4e3b1d05085
+  - id: e17747bc-9b7b-44e6-a443-f54229a02620
+role_v2:
+  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
-source-wordcount: '2995'
+source-wordcount: 2995
 ht-degree: 3%
 
 ---
 
 # API HTTP [!DNL Asset Compute Service] {#asset-compute-http-api}
 
-O uso da API é limitado a fins de desenvolvimento. A API é fornecida como um contexto ao desenvolver aplicativos personalizados. [!DNL Adobe Experience Manager] o as a [!DNL Cloud Service] usa a API para transmitir as informações de processamento para um aplicativo personalizado. Para obter mais informações, consulte [Usar microsserviços de ativos e Perfis de processamento](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
+O uso da API é limitado a fins de desenvolvimento. A API é fornecida como um contexto ao desenvolver aplicativos personalizados. [!DNL Adobe Experience Manager] como [!DNL Cloud Service] usa a API para transmitir as informações de processamento para um aplicativo personalizado. Para obter mais informações, consulte [Usar microsserviços de ativos e Perfis de processamento](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/manage/asset-microservices-configure-and-use).
 
 >[!NOTE]
 >
@@ -323,7 +336,7 @@ Códigos de status:
 * **401 Não autorizado**: quando a solicitação não tem [autenticação](#authentication-and-authorization) válida. Um exemplo pode ser um token de acesso inválido ou uma chave de API inválida.
 * **403 Proibido**: quando a solicitação não tem [autorização](#authentication-and-authorization) válida. Um exemplo pode ser um token de acesso válido, mas o projeto do Adobe Developer Console (conta técnica) não está inscrito em todos os serviços necessários.
 * **429 Muitas solicitações**: ocorre quando o sistema está sobrecarregado, seja devido a este cliente específico ou devido à demanda geral. Os clientes podem tentar novamente com um [retrocesso exponencial](https://en.wikipedia.org/wiki/Exponential_backoff). O corpo está vazio.
-* **4xx erro**: quando havia qualquer outro erro de cliente. Geralmente uma resposta JSON como essa é retornada, embora isso não seja garantido para todos os erros:
+* **4xx erro**: quando havia qualquer outro erro de cliente. Normalmente, uma resposta JSON como essa é retornada, embora isso não seja garantido para todos os erros:
 
   ```json
   {
@@ -333,7 +346,7 @@ Códigos de status:
   }
   ```
 
-* **Erro 5xx**: quando havia qualquer outro erro no servidor. Geralmente uma resposta JSON como essa é retornada, embora isso não seja garantido para todos os erros:
+* **5xx erro**: quando havia qualquer outro erro do lado do servidor. Normalmente, uma resposta JSON como essa é retornada, embora isso não seja garantido para todos os erros:
 
   ```json
   {
@@ -343,30 +356,30 @@ Códigos de status:
   }
   ```
 
-A maioria dos clientes provavelmente está inclinada a repetir a mesma solicitação com [retirada exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) em qualquer erro *exceto* problemas de configuração, como 401 ou 403, ou solicitações inválidas, como 400. Além da limitação de taxa regular por meio de respostas 429, uma interrupção ou limitação temporária do serviço pode resultar em erros 5xx. Em seguida, seria aconselhável tentar novamente após um período de tempo.
+Provavelmente, a maioria dos clientes está inclinada a repetir a mesma solicitação com [retirada exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) em qualquer erro *exceto*, problemas de configuração como 401 ou 403 ou solicitações inválidas como 400. Além da limitação de taxa regular por meio de respostas 429, uma interrupção ou limitação temporária de serviço pode resultar em erros 5xx. Em seguida, seria aconselhável tentar novamente após um período.
 
-Todas as respostas JSON (se presentes) incluem `requestId`, que é o mesmo valor que o cabeçalho `X-Request-Id`. O Adobe recomenda a leitura do cabeçalho porque ele está sempre presente. O `requestId` também é retornado em todos os eventos relacionados às solicitações de processamento como `requestId`. Os clientes não devem fazer nenhuma suposição sobre o formato desta cadeia de caracteres. É um identificador de cadeia de caracteres opaco.
+Todas as respostas JSON (se presentes) incluem o `requestId`, que é o mesmo valor que o cabeçalho `X-Request-Id`. A Adobe recomenda ler o cabeçalho porque ele está sempre presente. O `requestId` também é retornado em todos os eventos relacionados às solicitações de processamento como `requestId`. Os clientes não devem fazer nenhuma suposição sobre o formato dessa cadeia de caracteres. É um identificador de sequência de caracteres opaco.
 
 ## Aceitar o pós-processamento {#opt-in-to-post-processing}
 
-O [SDK do Asset compute](https://github.com/adobe/asset-compute-sdk) oferece suporte a um conjunto de opções básicas de pós-processamento de imagens. Os trabalhadores personalizados podem aceitar explicitamente o pós-processamento definindo o campo `postProcess` no objeto de representação como `true`.
+O [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk) oferece suporte a um conjunto de opções básicas de pós-processamento de imagem. Os trabalhadores personalizados podem aceitar explicitamente o pós-processamento definindo o campo `postProcess` no objeto de representação como `true`.
 
 Os casos de uso compatíveis são:
 
-* Cortar é uma representação de um retângulo cujos limites por crop.w, crop.h, crop.x e crop.y são definidos. Os detalhes de corte são especificados no campo `instructions.crop` do objeto de representação.
-* Redimensione imagens usando largura, altura ou ambos. O `instructions.width` e o `instructions.height` definem-no no objeto de representação. Para redimensionar usando apenas largura ou altura, defina apenas um valor. O serviço de computação conserva a proporção.
-* Defina a qualidade de uma imagem de JPEG. O `instructions.quality` define-o no objeto de representação. Um nível de qualidade de 100 representa a qualidade mais alta, enquanto números mais baixos significam uma diminuição na qualidade.
-* Crie imagens entrelaçadas. O `instructions.interlace` define-o no objeto de representação.
-* Defina DPI para ajustar o tamanho renderizado para fins de publicação no desktop ajustando a escala aplicada aos pixels. O `instructions.dpi` define-o no objeto de representação para alterar a resolução do dpi. No entanto, para redimensionar a imagem para que fique do mesmo tamanho em uma resolução diferente, use as instruções de `convertToDpi`.
-* Redimensione a imagem de modo que a largura ou a altura renderizada permaneça a mesma que a original na resolução de destino especificada (DPI). O `instructions.convertToDpi` define-o no objeto de representação.
+* Cortar é uma representação de um retângulo cujos limites por crop.w, crop.h, crop.x e crop.y estão definidos. Os detalhes de corte estão especificados no campo `instructions.crop` do objeto de representação.
+* Redimensionar imagens usando largura, altura ou ambos. O `instructions.width` e `instructions.height` o definem no objeto de representação. Para redimensionar usando apenas largura ou altura, defina apenas um valor. O serviço de computação conserva a taxa de proporção.
+* Defina a qualidade de uma imagem do JPEG. O `instructions.quality` o define no objeto de representação. Um nível de qualidade de 100 representa a qualidade mais alta, enquanto números mais baixos significam uma diminuição na qualidade.
+* Criar imagens entrelaçadas. O `instructions.interlace` o define no objeto de representação.
+* Defina DPI para ajustar o tamanho renderizado para fins de publicação em desktop, ajustando a escala aplicada aos pixels. O `instructions.dpi` o define no objeto de representação para alterar a resolução de dpi. Entretanto, para redimensionar a imagem para que ela tenha o mesmo tamanho em uma resolução diferente, use as instruções de `convertToDpi`.
+* Redimensionar a imagem de forma que sua largura ou altura renderizada permaneça a mesma que a original na resolução de destino especificada (DPI). O `instructions.convertToDpi` o define no objeto de representação.
 
 ## Inserir marca d&#39;água em ativos {#add-watermark}
 
-O [SDK do Asset compute](https://github.com/adobe/asset-compute-sdk) oferece suporte à adição de uma marca d&#39;água a arquivos de imagem PNG, JPEG, TIFF e GIF. A marca d&#39;água é adicionada seguindo as instruções de representação no objeto `watermark` na representação.
+O [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk) oferece suporte à adição de uma marca d&#39;água a arquivos de imagem PNG, JPEG, TIFF e GIF. A marca d&#39;água é adicionada seguindo as instruções de representação no objeto `watermark` na representação.
 
-A marca d&#39;água é feita durante o pós-processamento da representação. Para adicionar ativos de marca d&#39;água, o trabalhador personalizado [opta pelo pós-processamento](#opt-in-to-post-processing) definindo o campo `postProcess` no objeto de representação como `true`. Se o trabalhador não aceitar, a marca d&#39;água não será aplicada, mesmo que o objeto de marca d&#39;água seja definido no objeto de representação na solicitação.
+A marca d&#39;água é feita durante o pós-processamento da representação. Para adicionar ativos de marca d&#39;água, o trabalhador personalizado [opta pelo pós-processamento](#opt-in-to-post-processing) definindo o campo `postProcess` no objeto de representação como `true`. Se o trabalhador não aceitar, a marca d&#39;água não será aplicada, mesmo se o objeto de marca d&#39;água estiver definido no objeto de representação na solicitação.
 
-## Instruções da representação {#rendition-instructions}
+## Instruções de representação {#rendition-instructions}
 
 Estas são as opções disponíveis para a matriz `renditions` em [`/process`](#process-request).
 
@@ -374,25 +387,25 @@ Estas são as opções disponíveis para a matriz `renditions` em [`/process`](#
 
 | Nome | Tipo | Descrição | Exemplo |
 |-------------------|----------|-------------|---------|
-| `fmt` | `string` | O formato de destino das representações também pode ser `text` para extração de texto e `xmp` para extração de metadados XMP como xml. Consulte [formatos com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
+| `fmt` | `string` | O formato de destino das representações também pode ser `text` para extração de texto e `xmp` para extração de metadados XMP como xml. Ver [formatos com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support) | `png` |
 | `worker` | `string` | URL de um [aplicativo personalizado](develop-custom-application.md). Deve ser uma URL `https://`. Se esse campo estiver presente, um aplicativo personalizado criará a representação. Qualquer outro campo de representação definido é usado no aplicativo personalizado. | `"https://1234.adobeioruntime.net`<br>`/api/v1/web`<br>`/example-custom-worker-master/worker"` |
-| `target` | `string` | A URL para a qual a representação gerada deve ser carregada usando o PUT HTTP. | `http://w.com/img.jpg` |
-| `target` | `object` | Informações de upload de URL pré-assinado de várias partes para a representação gerada. Estas informações são para o [Carregamento Binário Direto de AEM/Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) com este [comportamento de carregamento de várias partes](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadeias, uma para cada URL de parte pré-assinada</li><li>`minPartSize`: o tamanho mínimo a ser usado para uma parte = url</li><li>`maxPartSize`: o tamanho máximo a ser usado para uma parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
-| `userData` | `object` | Opcional. O cliente controla o espaço reservado e o transmite no estado em que se encontra para eventos de representação. Permite que um cliente adicione informações personalizadas para identificar eventos de representação. Ele não deve ser modificado ou utilizado em aplicativos personalizados, pois os clientes podem alterá-lo a qualquer momento. | `{ ... }` |
+| `target` | `string` | O URL para o qual a representação gerada deve ser carregada usando HTTP PUT. | `http://w.com/img.jpg` |
+| `target` | `object` | Informações de upload de URL pré-assinado de várias partes para a representação gerada. Estas informações são para [Carregamento Binário Direto do AEM/Oak](https://jackrabbit.apache.org/oak/docs/features/direct-binary-access.html) com este [comportamento de carregamento multiparte](https://jackrabbit.apache.org/oak/docs/apidocs/org/apache/jackrabbit/api/binary/BinaryUpload.html).<br>Campos:<ul><li>`urls`: matriz de cadeias de caracteres, uma para cada URL de parte pré-assinada</li><li>`minPartSize`: o tamanho mínimo a ser usado para uma parte = url</li><li>`maxPartSize`: o tamanho máximo a ser usado para uma parte = url</li></ul> | `{ "urls": [ "https://part1...", "https://part2..." ], "minPartSize": 10000, "maxPartSize": 100000 }` |
+| `userData` | `object` | Opcional. O cliente controla o espaço reservado e o transmite como está para eventos de representação. Permite que um cliente adicione informações personalizadas para identificar eventos de representação. Eles não devem ser modificados ou usados em aplicativos personalizados, pois os clientes podem alterá-los a qualquer momento. | `{ ... }` |
 
 ### Campos específicos da representação {#rendition-specific-fields}
 
-Para obter uma lista de formatos de arquivo atualmente compatíveis, consulte [formatos de arquivo compatíveis](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
+Para obter uma lista de formatos de arquivo com suporte no momento, consulte [formatos de arquivo com suporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/assets/file-format-support).
 
 | Nome | Tipo | Descrição | Exemplo |
 |-------------------|----------|-------------|---------|
-| `*` | `*` | É possível adicionar campos personalizados avançados que um [aplicativo personalizado](develop-custom-application.md) entende. | |
-| `embedBinaryLimit` | `number` em bytes | Quando o tamanho do arquivo da renderização for menor que o valor especificado, ela será incluída no evento enviado após a conclusão da criação. O tamanho máximo permitido para incorporação é 32 KB (32 x 1024 bytes). Se uma renderização for maior em tamanho do que o limite de `embedBinaryLimit`, ela será colocada em um local no armazenamento na nuvem e não será incorporada ao evento. | `3276` |
+| `*` | `*` | Campos personalizados avançados podem ser adicionados compreendidos por um [aplicativo personalizado](develop-custom-application.md). | |
+| `embedBinaryLimit` | `number` em bytes | Quando o tamanho do arquivo da representação é menor que o valor especificado, ele é incluído no evento enviado após a conclusão de sua criação. O tamanho máximo permitido para a incorporação é de 32 KB (32 x 1024 bytes). Se uma representação for maior que o limite `embedBinaryLimit`, ela será colocada em um local no armazenamento na nuvem e não será incorporada ao evento. | `3276` |
 | `width` | `number` | Largura em pixels. somente para representações de imagem. | `200` |
 | `height` | `number` | Altura em pixels. somente para representações de imagem. | `200` |
-|                   |          | A proporção é sempre mantida se: <ul> <li> `width` e `height` são especificados, então a imagem se ajusta ao tamanho enquanto mantém a proporção </li><li> Se apenas `width` ou `height` for especificado, a imagem resultante usará a dimensão correspondente enquanto mantém a proporção</li><li> Se `width` ou `height` não for especificado, o tamanho de pixel da imagem original será usado. Depende do tipo de origem. Para alguns formatos, como arquivos PDF, um tamanho padrão é usado. Pode haver um limite de tamanho máximo.</li></ul> | |
-| `quality` | `number` | Especifique a qualidade jpeg no intervalo de `1` a `100`. Aplicável somente a representações de imagem. | `90` |
-| `xmp` | `string` | Usado somente por write-back de metadados XMP, é codificado na base64 XMP para gravar de volta na representação especificada. | |
+|                   |          | A proporção será sempre mantida se: <ul> <li> `width` e `height` estão especificados, então a imagem se ajusta ao tamanho, mantendo a proporção </li><li> Se apenas `width` ou `height` for especificado, a imagem resultante usará a dimensão correspondente, mantendo a taxa de proporção</li><li> Se `width` ou `height` não for especificado, o tamanho original do pixel da imagem será usado. Depende do tipo de origem. Para alguns formatos, como arquivos PDF, um tamanho padrão é usado. Pode haver um limite de tamanho máximo.</li></ul> | |
+| `quality` | `number` | Especifique a qualidade do jpeg no intervalo de `1` a `100`. Aplicável somente para representações de imagem. | `90` |
+| `xmp` | `string` | Usado somente pelo write-back de metadados do XMP, é o XMP codificado na base 64 que grava de volta na representação especificada. | |
 | `interlace` | `bool` | Crie um PNG entrelaçado, GIF ou JPEG progressivo definindo-o como `true`. Não tem efeito em outros formatos de arquivo. | |
 | `jpegSize` | `number` | Tamanho aproximado do arquivo JPEG em bytes. Ele substitui qualquer configuração `quality`. Não tem efeito em outros formatos. | |
 | `dpi` | `number` ou `object` | Defina x e y DPI. Para simplificar, também pode ser definido como um único número, que é usado para x e y. Ela não tem efeito na própria imagem. | `96` ou `{ xdpi: 96, ydpi: 96 }` |
@@ -412,7 +425,7 @@ O formato PNG é usado como marca d&#39;água.
 
 ## Eventos assíncronos {#asynchronous-events}
 
-Quando o processamento de uma renderização for concluído ou quando ocorrer um erro, um evento será enviado para um Adobe [!DNL `I/O Events Journal`]. Os clientes devem escutar a URL do diário fornecida por meio de [`/register`](#register). A resposta do diário inclui uma matriz `event` que consiste em um objeto para cada evento, do qual o campo `event` inclui a carga do evento real.
+Quando o processamento de uma representação for concluído ou quando ocorrer um erro, um evento será enviado para uma Adobe [!DNL `I/O Events Journal`]. Os clientes devem escutar a URL do diário fornecida por meio de [`/register`](#register). A resposta do diário inclui uma matriz `event` que consiste em um objeto para cada evento, do qual o campo `event` inclui a carga do evento real.
 
 O tipo de Adobe [!DNL `I/O Events`] para todos os eventos de [!DNL Asset Compute Service] é `asset_compute`. O diário é inscrito automaticamente apenas neste tipo de evento e não há mais nenhum requisito para filtrar com base no tipo de Evento [!DNL Adobe Developer]. Os tipos de evento específicos do serviço estão disponíveis na propriedade `type` do evento.
 
@@ -420,39 +433,39 @@ O tipo de Adobe [!DNL `I/O Events`] para todos os eventos de [!DNL Asset Compute
 
 | Evento | Descrição |
 |---------------------|-------------|
-| `rendition_created` | Enviado para cada representação processada e carregada com êxito. |
-| `rendition_failed` | Enviado para cada renderização que falhou ao processar ou carregar. |
+| `rendition_created` | Enviado para cada representação processada e carregada com sucesso. |
+| `rendition_failed` | Enviado para cada representação que falhou no processamento ou upload. |
 
-### Atributos de evento {#event-attributes}
+### Atributos do evento {#event-attributes}
 
 | Atributo | Tipo | Evento | Descrição |
 |-------------|----------|---------------|-------------|
-| `date` | `string` | `*` | Carimbo de data/hora de quando o evento foi enviado no formato estendido simplificado [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601), conforme definido pelo JavaScript [Date.toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString). |
+| `date` | `string` | `*` | Carimbo de data/hora quando o evento foi enviado no formato estendido simplificado [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601), conforme definido pelo JavaScript [Date.toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString). |
 | `requestId` | `string` | `*` | A ID da solicitação original para `/process`, igual ao cabeçalho `X-Request-Id`. |
 | `source` | `object` | `*` | O `source` da solicitação `/process`. |
 | `userData` | `object` | `*` | O `userData` da representação da solicitação `/process`, se definida. |
 | `rendition` | `object` | `rendition_*` | O objeto de representação correspondente passado em `/process`. |
-| `metadata` | `object` | `rendition_created` | As propriedades de [metadados](#metadata) da representação. |
-| `errorReason` | `string` | `rendition_failed` | [motivo](#error-reasons) da falha na representação, se houver. |
-| `errorMessage` | `string` | `rendition_failed` | O texto fornece mais detalhes sobre a falha de renderização, se houver. |
+| `metadata` | `object` | `rendition_created` | As propriedades [metadata](#metadata) da representação. |
+| `errorReason` | `string` | `rendition_failed` | Falha de representação [motivo](#error-reasons), se houver. |
+| `errorMessage` | `string` | `rendition_failed` | O texto que fornece mais detalhes sobre a falha de representação, se houver. |
 
 ### Metadados {#metadata}
 
 | Propriedade | Descrição |
 |--------|-------------|
 | `repo:size` | O tamanho da representação em bytes. |
-| `repo:sha1` | O resumo sha1 da rendição. |
+| `repo:sha1` | O resumo sha1 da representação. |
 | `dc:format` | O tipo MIME da representação. |
-| `repo:encoding` | A codificação de conjunto de caracteres da renderização, caso seja um formato baseado em texto. |
-| `tiff:ImageWidth` | A largura da representação em pixels. Somente presente para representações de imagem. |
-| `tiff:ImageLength` | O comprimento da representação em pixels. Somente presente para representações de imagem. |
+| `repo:encoding` | A codificação de conjunto de caracteres da representação, caso seja um formato baseado em texto. |
+| `tiff:ImageWidth` | A largura da representação em pixels. Presente somente para representações de imagem. |
+| `tiff:ImageLength` | O comprimento da representação em pixels. Presente somente para representações de imagem. |
 
 ### Motivos de erro {#error-reasons}
 
 | Motivo | Descrição |
 |---------|-------------|
-| `RenditionFormatUnsupported` | Não há suporte para o formato de representação solicitado para a origem especificada. |
-| `SourceUnsupported` | A origem específica não tem suporte mesmo que o tipo seja suportado. |
+| `RenditionFormatUnsupported` | O formato de representação solicitado não tem suporte para a origem fornecida. |
+| `SourceUnsupported` | A origem específica não é compatível, mesmo que o tipo seja. |
 | `SourceCorrupt` | Os dados de origem estão corrompidos. Inclui arquivos vazios. |
-| `RenditionTooLarge` | Não foi possível carregar a representação usando as URLs pré-assinadas fornecidas em `target`. O tamanho da representação real está disponível como metadados em `repo:size` e é usado pelo cliente para processar novamente essa representação com o número correto de URLs pré-assinadas. |
+| `RenditionTooLarge` | Não foi possível carregar a representação usando as URLs pré-assinadas fornecidas em `target`. O tamanho de representação real está disponível como metadados em `repo:size` e é usado pelo cliente para processar novamente essa representação com o número correto de URLs pré-assinadas. |
 | `GenericError` | Qualquer outro erro inesperado. |

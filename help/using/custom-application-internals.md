@@ -2,9 +2,17 @@
 title: Entender o funcionamento de um aplicativo personalizado
 description: Trabalho interno do  [!DNL Asset Compute Service] aplicativo personalizado para ajudar a entender como ele funciona.
 exl-id: a3ee6549-9411-4839-9eff-62947d8f0e42
-source-git-commit: aed361a577fc53caec4118e417b1c0c814617b51
+TQID: https://experienceleague.adobe.com/cwZSB-PP9CxqnUUQslrSRSp-ljjliomsR9TflBUOCuk
+product_v2:
+  - id: d09181b5-a36a-43de-ba01-36641440bc43
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+source-git-commit: 2510f77fed8d0f0708e09f32d0b13a437d2ede4f
 workflow-type: tm+mt
-source-wordcount: '786'
+source-wordcount: 786
 ht-degree: 0%
 
 ---
@@ -96,7 +104,7 @@ exports.main = worker(async (source, rendition) => {
 });
 ```
 
-### Download source files {#download-source}
+### Baixar arquivos de origem {#download-source}
 
 Um aplicativo personalizado só lida com arquivos locais. O [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) manipula o download do arquivo de origem.
 
@@ -104,25 +112,25 @@ Um aplicativo personalizado só lida com arquivos locais. O [Asset Compute SDK](
 
 O SDK chama uma [função de retorno de chamada de representação](https://github.com/adobe/asset-compute-sdk#rendition-callback-for-worker-required) assíncrona para cada representação.
 
-A função de retorno de chamada tem acesso aos objetos [origem](https://github.com/adobe/asset-compute-sdk#source) e [representação](https://github.com/adobe/asset-compute-sdk#rendition). O `source.path` já existe e é o caminho para a cópia local do arquivo de origem. O `rendition.path` é o caminho onde a representação processada deve ser armazenada. A menos que o [disableSourceDownload flag](https://github.com/adobe/asset-compute-sdk#worker-options-optional) esteja definido, o aplicativo deve usar exatamente o `rendition.path`. Caso contrário, o SDK não poderá localizar ou identificar o arquivo de representação e falhará.
+A função de retorno de chamada tem acesso aos objetos [origem](https://github.com/adobe/asset-compute-sdk#source) e [representação](https://github.com/adobe/asset-compute-sdk#rendition). O `source.path` já existe e é o caminho para a cópia local do arquivo de origem. O `rendition.path` é o caminho onde a representação processada deve ser armazenada. A menos que o sinalizador [disableSourceDownload](https://github.com/adobe/asset-compute-sdk#worker-options-optional) esteja definido, o aplicativo deve usar exatamente o `rendition.path`. Caso contrário, o SDK não poderá localizar ou identificar o arquivo de representação e falhará.
 
 A simplificação excessiva do exemplo é feita para ilustrar e se concentrar na anatomia de um aplicativo personalizado. O aplicativo apenas copia o arquivo de origem para o destino da representação.
 
 Para obter mais informações sobre os parâmetros de retorno de chamada de representação, consulte [API do Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#api-details).
 
-### Fazer upload de renderizações {#upload-rendition}
+### Fazer upload de representações {#upload-rendition}
 
-Depois que cada representação é criada e armazenada em um arquivo com o caminho fornecido por `rendition.path`, o [SDK do Asset compute](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) carrega cada representação em um armazenamento na nuvem (AWS ou Azure). Um aplicativo personalizado obtém várias representações ao mesmo tempo se, e somente se, a solicitação de entrada tiver várias representações apontando para o mesmo URL de aplicativo. O upload para o armazenamento na nuvem é feito após cada representação e antes de executar o retorno de chamada para a próxima representação.
+Depois que cada representação é criada e armazenada em um arquivo com o caminho fornecido por `rendition.path`, o [Asset Compute SDK](https://github.com/adobe/asset-compute-sdk#adobe-asset-compute-worker-sdk) carrega cada representação em um armazenamento na nuvem (AWS ou Azure). Um aplicativo personalizado obtém várias representações ao mesmo tempo se, e somente se, a solicitação recebida tiver várias representações apontando para o mesmo URL de aplicativo. O upload para o armazenamento na nuvem é feito após cada representação e antes de executar o retorno de chamada para a próxima representação.
 
-O `batchWorker()` tem um comportamento diferente. Ele processa todas as representações e somente depois que todas foram processadas, ele as carrega.
+O `batchWorker()` tem um comportamento diferente. Ele processa todas as representações e, somente depois que todas tiverem sido processadas, faz o upload delas.
 
 ## [!DNL Adobe I/O Events] {#aio-events}
 
-O SDK envia o Adobe [!DNL I/O Events] para cada representação. Esses eventos são do tipo `rendition_created` ou `rendition_failed`, dependendo do resultado. Para obter mais informações, consulte [Asset compute de eventos assíncronos](api.md#asynchronous-events).
+O SDK envia o Adobe [!DNL I/O Events] para cada representação. Estes eventos são do tipo `rendition_created` ou `rendition_failed`, dependendo do resultado. Para obter mais informações, consulte [Eventos assíncronos do Asset Compute](api.md#asynchronous-events).
 
 ## Receber [!DNL Adobe I/O Events] {#receive-aio-events}
 
-O cliente sonda o diário de Adobe [!DNL I/O Events] de acordo com sua lógica de consumo. A URL do diário inicial é a fornecida na resposta da API `/register`. Os eventos podem ser identificados usando o `requestId` que está presente nos eventos e é igual ao retornado em `/process`. Cada representação tem um evento separado que é enviado assim que o upload (ou falha) da representação é feito. Quando recebe um evento correspondente, o cliente pode exibir ou manipular as representações resultantes.
+O cliente sonda o diário [!DNL I/O Events] do Adobe de acordo com sua lógica de consumo. A URL inicial do diário é a fornecida na resposta da API `/register`. Eventos podem ser identificados usando o `requestId` que está presente nos eventos e é o mesmo retornado em `/process`. Cada representação tem um evento separado que é enviado assim que a representação é carregada (ou falha). Ao receber um evento correspondente, o cliente pode exibir ou manipular as representações resultantes.
 
 A biblioteca JavaScript [`asset-compute-client`](https://github.com/adobe/asset-compute-client#usage) simplifica a sondagem do diário usando o método `waitActivation()` para obter todos os eventos.
 
