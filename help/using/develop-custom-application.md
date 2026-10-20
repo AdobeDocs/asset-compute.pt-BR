@@ -196,7 +196,7 @@ No código do aplicativo, é possível fazer chamadas de API externas para ajuda
 ```javascript
 exports.main = worker(async function (source, rendition) {
 
-    const response = await fetch('https://adobe.com', {
+    const response = await fetch('https://adobe.com/br', {
         method: 'GET',
         Authorization: params.AUTH_KEY
     })
